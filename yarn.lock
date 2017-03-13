@@ -220,6 +220,10 @@ babel-code-frame@^6.11.0:
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
+backbone.eventrouter@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/backbone.eventrouter/-/backbone.eventrouter-0.3.0.tgz#db1523b0c18b2d0da186f148d33a6365e8a955b7"
+
 backbone.marionette@^3.0.0, backbone.marionette@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/backbone.marionette/-/backbone.marionette-3.2.0.tgz#c98d146984344ec6453103ac7fa1987059e38de1"
