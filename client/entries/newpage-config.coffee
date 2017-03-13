@@ -32,7 +32,7 @@ config.navbarEntries = [
     menu: [
       {
         label: 'Intro'
-        url: '#pages/intro'
+        url: '#pages/README'
       }
       {
         label: 'Login'
