@@ -41,7 +41,6 @@ class Controller extends MainController
 
   view_page: (name) ->
     doc = DocChannel.request 'get-document', name
-    console.log "DOC", doc
     response = doc.fetch()
     response.done =>
       if not doc.get 'content'
@@ -73,7 +72,6 @@ class Controller extends MainController
   frontdoor: ->
     appmodel = MainChannel.request 'main:app:appmodel'
     if appmodel.get 'needUser'
-      console.log 'needUser is true'
       @frontdoor_needuser()
     else
       @default_view()
