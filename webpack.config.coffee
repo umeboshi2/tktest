@@ -80,8 +80,8 @@ else
 WebPackConfig =
   entry:
     vendor: vendor
-    index: './client/entries/index.coffee'
-    newpage: './client/entries/newpage.coffee'
+    index: './js/entries/index.js'
+    newpage: './js/entries/newpage.js'
   output: WebPackOutput
   plugins: AllPlugins
   module:

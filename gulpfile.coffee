@@ -8,6 +8,8 @@ gutil = require 'gulp-util'
 size = require 'gulp-size'
 shell = require 'shelljs'
 webpack = require 'webpack'
+webpackConfig = require "./webpack.config"
+WebpackDevServer = require 'webpack-dev-server'
 
 
 coffee = require 'gulp-coffee'
@@ -26,7 +28,7 @@ gulp.task 'devpages', (cb) ->
     console.log "Created new page #{fname}"
 
 gulp.task 'coffee', () ->
-  gulp.src('./src/**/*.coffee')
+  gulp.src('./client/**/*.coffee')
   .pipe sourcemaps.init()
   .pipe coffee
     bare: true
@@ -37,7 +39,18 @@ gulp.task 'coffee', () ->
   .pipe gulp.dest './js'
 
 
-gulp.task 'webpack:build-prod', (callback) ->
+devServer = {}
+gulp.task "webpack-dev-server", ['coffee', 'devpages'], (callback) ->
+  # Start a webpack-dev-server.
+  devServer = new WebpackDevServer(webpack(webpackConfig))
+  devServer.listen 8080, "0.0.0.0", (err) ->
+    throw new gutil.PluginError("webpack-dev-server", err) if err
+    gutil.log "[webpack-dev-server]", "http://localhost:8080"
+    callback()
+  return
+
+
+gulp.task 'webpack:build-prod', ['coffee'], (callback) ->
   statopts = 
     colors: true
     chunks: true
@@ -56,7 +69,7 @@ gulp.task 'webpack:build-prod', (callback) ->
   return
 
 gulp.task 'default', ->
-  gulp.start 'devpages'
+  gulp.start 'webpack-dev-server'
   
 gulp.task 'production', ->
   gulp.start 'webpack:build-prod'
