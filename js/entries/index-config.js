@@ -1,0 +1,41 @@
+var config, misc_menu;
+
+config = require('./base-app-config');
+
+misc_menu = {
+  label: 'Misc Applets',
+  menu: [
+    {
+      label: 'bumblr',
+      url: '#bumblr'
+    }, {
+      label: 'Hubby',
+      url: '#hubby'
+    }
+  ]
+};
+
+config.navbarEntries = [
+  {
+    label: 'New App',
+    url: '/newpage'
+  }, misc_menu, {
+    label: 'Hubby',
+    url: '#hubby'
+  }, {
+    label: 'Bumblr',
+    url: '#bumblr'
+  }, {
+    label: 'Another',
+    menu: [
+      {
+        label: 'Login',
+        url: '#frontdoor/login'
+      }
+    ]
+  }
+];
+
+module.exports = config;
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZW50cmllcy9pbmRleC1jb25maWcuanMiLCJzb3VyY2VzIjpbImVudHJpZXMvaW5kZXgtY29uZmlnLmNvZmZlZSJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxJQUFBOztBQUFBLE1BQUEsR0FBUyxPQUFBLENBQVEsbUJBQVI7O0FBRVQsU0FBQSxHQUNFO0VBQUEsS0FBQSxFQUFPLGNBQVA7RUFDQSxJQUFBLEVBQU07SUFDSjtNQUNFLEtBQUEsRUFBTyxRQURUO01BRUUsR0FBQSxFQUFLLFNBRlA7S0FESSxFQUtKO01BQ0UsS0FBQSxFQUFPLE9BRFQ7TUFFRSxHQUFBLEVBQUssUUFGUDtLQUxJO0dBRE47OztBQVlGLE1BQU0sQ0FBQyxhQUFQLEdBQXVCO0VBQ3JCO0lBQ0UsS0FBQSxFQUFPLFNBRFQ7SUFFRSxHQUFBLEVBQUssVUFGUDtHQURxQixFQUtyQixTQUxxQixFQU1yQjtJQUNFLEtBQUEsRUFBTyxPQURUO0lBRUUsR0FBQSxFQUFLLFFBRlA7R0FOcUIsRUFVckI7SUFDRSxLQUFBLEVBQU8sUUFEVDtJQUVFLEdBQUEsRUFBSyxTQUZQO0dBVnFCLEVBY3JCO0lBQ0UsS0FBQSxFQUFPLFNBRFQ7SUFFRSxJQUFBLEVBQU07TUFDSjtRQUNFLEtBQUEsRUFBTyxPQURUO1FBRUUsR0FBQSxFQUFLLGtCQUZQO09BREk7S0FGUjtHQWRxQjs7O0FBMEJ2QixNQUFNLENBQUMsT0FBUCxHQUFpQiIsInNvdXJjZXNDb250ZW50IjpbImNvbmZpZyA9IHJlcXVpcmUgJy4vYmFzZS1hcHAtY29uZmlnJ1xuXG5taXNjX21lbnUgPSBcbiAgbGFiZWw6ICdNaXNjIEFwcGxldHMnXG4gIG1lbnU6IFtcbiAgICB7XG4gICAgICBsYWJlbDogJ2J1bWJscidcbiAgICAgIHVybDogJyNidW1ibHInXG4gICAgfVxuICAgIHtcbiAgICAgIGxhYmVsOiAnSHViYnknXG4gICAgICB1cmw6ICcjaHViYnknXG4gICAgfVxuICBdXG5cbmNvbmZpZy5uYXZiYXJFbnRyaWVzID0gW1xuICB7XG4gICAgbGFiZWw6ICdOZXcgQXBwJ1xuICAgIHVybDogJy9uZXdwYWdlJ1xuICB9XG4gIG1pc2NfbWVudVxuICB7XG4gICAgbGFiZWw6ICdIdWJieSdcbiAgICB1cmw6ICcjaHViYnknXG4gIH1cbiAge1xuICAgIGxhYmVsOiAnQnVtYmxyJ1xuICAgIHVybDogJyNidW1ibHInXG4gIH1cbiAge1xuICAgIGxhYmVsOiAnQW5vdGhlcidcbiAgICBtZW51OiBbXG4gICAgICB7XG4gICAgICAgIGxhYmVsOiAnTG9naW4nXG4gICAgICAgIHVybDogJyNmcm9udGRvb3IvbG9naW4nXG4gICAgICB9XG4gICAgXVxuICB9XG4gIF1cblxuXG5tb2R1bGUuZXhwb3J0cyA9IGNvbmZpZ1xuIl19
