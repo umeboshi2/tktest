@@ -42,22 +42,8 @@ class TopApp extends Toolkit.App
     @initPage()
     if @getState 'startHistory'
       # FIXME we need something better
-      # 
-      #console.log "startHistory onStart"
-      location = window.location
-      hash = if not location.hash then '#' else location.hash
-      url = "#{location.hash}"
-      #console.log "window.location", location
-      #console.log "url", url
       c = MainChannel.request 'main-controller'
-      applet = hash.split('/')[0]
-      while applet.startsWith '#'
-        applet = applet.slice 1
-      #console.log "applet", applet, hash
-      c.routeApplet applet
-      Backbone.history.start(url) unless Backbone.history.started
-      #r = new Backbone.Router
-      #r.navigate url, trigger: true
+      c.loadFrontDoor()
       
 module.exports = TopApp
 

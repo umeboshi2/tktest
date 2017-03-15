@@ -4,14 +4,19 @@ BootStrapAppRouter = require 'agate/src/bootstrap_router'
 
 MainChannel = Backbone.Radio.channel 'global'
 
-class MainRouter extends Backbone.Router
-  null
-  
-
 class RequireController extends Marionette.Object
   _route_applet: (applet) ->
     MainChannel.request "applet:#{applet}:route"
 
+  loadFrontDoor: ->
+    applet = 'frontdoor'
+    handler = System.import "../applets/#{applet}/main"
+    console.log "system.import", applet
+    handler.then =>
+      MainChannel.request "applet:#{applet}:route"
+      Backbone.history.start() unless Backbone.history.started
+      console.log "History Started"
+    
   _handle_route: (applet, suffix) ->
     console.log "_handle_route", applet, suffix
     config = MainChannel.request 'main:app:config'
@@ -20,7 +25,6 @@ class RequireController extends Marionette.Object
     if applet in Object.keys config.appletRoutes
       applet = config.appletRoutes[applet]
       console.log "Using defined appletRoute", applet
-    chunk = "applet-main-chunk-#{applet}"
     handler = System.import "../applets/#{applet}/main"
     console.log "system.import", applet
     handler.then =>
@@ -32,12 +36,12 @@ class RequireController extends Marionette.Object
 
   frontdoor: ->
     @_handle_route 'frontdoor'
-    
+  
 class Router extends Marionette.AppRouter
   appRoutes:
-    '': 'frontdoor'
+    #'': 'frontdoor'
     ':applet/*': 'routeApplet'
-     
+
   onRoute: (name, path, args) ->
     console.log "MainRouter.onRoute", name, path, args
     
