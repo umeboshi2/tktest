@@ -22,11 +22,22 @@ class FrontdoorLayout extends Backbone.Marionette.View
     content: new SlideDownRegion
       el: '#main-content'
       speed: 'slow'
-  
+  onBeforeDestroy: (view) ->
+    console.log "FrontdoorLayout onBeforeDestroy!!!!", view
+    console.log "Determine what to do with child apps when changing"
+    #controller = view.controller
+    #controller.applet.stop()
+    #controller.applet.destroy()
+    
+     
 
 class Controller extends MainController
   layoutClass: FrontdoorLayout
-  
+
+  setup_layout_if_needed: ->
+    super()
+    @layout.controller = @
+    
   _view_resource: (doc) ->
     @setup_layout_if_needed()
     { FrontDoorMainView } = require './views'
@@ -70,8 +81,8 @@ class Controller extends MainController
     @view_page 'README'
       
   frontdoor: ->
-    appmodel = MainChannel.request 'main:app:appmodel'
-    if appmodel.get 'needUser'
+    config = MainChannel.request 'main:app:config'
+    if config?.needLogin
       @frontdoor_needuser()
     else
       @default_view()

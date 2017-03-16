@@ -5,8 +5,6 @@ FullCalendar = require 'fullcalendar'
 
 { apiroot } = require './collections'
 
-# FIXME
-#require '../../node_modules/fullcalendar/dist/fullcalendar.css'
 require 'fullcalendar/dist/fullcalendar.css'
 
 HubChannel = Backbone.Radio.channel 'hubby'
@@ -54,10 +52,10 @@ class MeetingCalendarView extends Backbone.Marionette.View
     minicalendar: false
     layout: false
 
+  onBeforeDestroy: ->
+    cal = @ui.calendar.fullCalendar 'destroy'
+    
   onDomRefresh: () ->
-    #$('.listview-header').css
-    #  'font-family': 'Play'
-    #$('.listview-header').text "Meetings..."
     calEventClick = (event) =>
       if not @options.minicalendar
         url = event.url
@@ -65,9 +63,10 @@ class MeetingCalendarView extends Backbone.Marionette.View
       else
         meeting_id = event.id
         HubChannel.request 'view-meeting', @options.layout, 'meeting', meeting_id
-    date = HubChannel.request 'maincalendar:get-date'
+    date = HubChannel.request 'maincalendar:get-date' or new Date()
     cal = @ui.calendar
     cal.fullCalendar
+      defaultDate: date
       header:
         left: 'prevYear, nextYear'
         center: 'title'
@@ -82,11 +81,6 @@ class MeetingCalendarView extends Backbone.Marionette.View
       viewRender: calendar_view_render
       loading: loading_calendar_events
       eventClick: calEventClick
-    # if the current calendar date that has been set,
-    # go to that date
-    if date != undefined
-      cal.fullCalendar('gotoDate', date)
-        
       
     
 module.exports = MeetingCalendarView

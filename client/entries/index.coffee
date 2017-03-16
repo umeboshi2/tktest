@@ -5,27 +5,14 @@ tc = require 'teacup'
 require 'bootstrap'
 
 TopApp = require './oldtop'
-MessagesApp = require './messages'
-NavbarApp = require './navbar'
 MainAppConfig = require './index-config'
 
 MainChannel = Backbone.Radio.channel 'global'
-MessageChannel = Backbone.Radio.channel 'messages'
 
-# main channel requests
-# 
-# - applet:#{name}:route
-# this creates an AppRouter and a Controller, setting
-# routes to access the applet.  The reply function
-# is in the "main" module
-#
-# - mainpage:init (appmodel)
-# This request builds the main layout.
-#
-# 
-# 
-#
-
+MainChannel.reply 'main-router', ->
+  console.warn "This app has no main router"
+  new Backbone.Router
+  
 class TkAppState extends Backbone.Model
   defaults:
     AppRegion: new Marionette.Region el:'body'

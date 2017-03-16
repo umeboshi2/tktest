@@ -1,10 +1,11 @@
 Marionette = require 'backbone.marionette'
+Toolkit = require 'marionette.toolkit'
 
 Controller = require './controller'
 
+TkApplet = require 'agate/src/tkapplet'
 
 MainChannel = Backbone.Radio.channel 'global'
-
 
 class Router extends Marionette.AppRouter
   appRoutes:
@@ -16,8 +17,19 @@ class Router extends Marionette.AppRouter
     #FIXME
     'pages/:name': 'view_page'
     
+class Applet extends TkApplet
+  Controller: Controller
+  Router: Router
+
+  onStop: ->
+    console.log "(Child) Stopping frontdoor", @.isRunning()
+    super()
+
 MainChannel.reply 'applet:frontdoor:route', () ->
+  console.warn "Don't use applet:frontdoor:route"
   controller = new Controller MainChannel
   router = new Router
     controller: controller
-
+    
+      
+module.exports = Applet
