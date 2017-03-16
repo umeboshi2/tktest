@@ -2,6 +2,9 @@ beautify = require('js-beautify').html
 
 pages = require './templates'
 
+# Set the default environment to be `development`
+process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+
 try
   webpackManifest = require '../../build/manifest.json'
 catch err
@@ -9,12 +12,13 @@ catch err
       'common.js': 'common.js'
       'vendor.js': 'vendor.js'
       'agate.js': 'agate.js'
-  
+
+
 # FIXME require this  
 UseMiddleware = false or process.env.__DEV_MIDDLEWARE__ is 'true'
 
 get_manifest = (name) ->
-  if true or UseMiddleware
+  if process.env.NODE_ENV == 'development'
     manifest =
       'common.js': 'common.js'
       'vendor.js': 'vendor.js'

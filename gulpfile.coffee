@@ -25,6 +25,16 @@ gulp.task 'devpages', (cb) ->
     fs.writeFileSync fname, page
     console.log "Created new page #{fname}"
 
+gulp.task 'pages', (cb) ->
+  process.env.PRODUCTION_BUILD = 'true'
+  process.env.NODE_ENV = 'production'
+  pages = require './src/pages'
+  for tmpl of pages.templates
+    page = pages.make_page_html tmpl
+    fname = "#{tmpl}.html"
+    fs.writeFileSync fname, page
+    console.log "Created new page #{fname}"
+
 gulp.task 'coffee', () ->
   gulp.src('./src/**/*.coffee')
   .pipe sourcemaps.init()
