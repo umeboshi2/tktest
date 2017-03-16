@@ -4,6 +4,7 @@ module.exports = [
   'backbone.marionette'
   'backbone.radio'
   'bootstrap'
+  'marionette.toolkit'
   'jquery'
   'teacup'
   ]
