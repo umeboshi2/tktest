@@ -2,12 +2,6 @@ Backbone = require 'backbone'
 Marionette = require 'backbone.marionette'
 tc = require 'teacup'
 
-#FullCalendar = require 'fullcalendar'
-
-# FIXME
-#require '../../node_modules/fullcalendar/dist/fullcalendar.css'
-#require 'fullcalendar/dist/fullcalendar.css'
-
 HubChannel = Backbone.Radio.channel 'hubby'
 
 #################################

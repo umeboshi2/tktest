@@ -3,10 +3,9 @@ Marionette = require 'backbone.marionette'
 
 tc = require 'teacup'
 
-BootstrapFormView = require 'agate/src/bootstrap_formview'
+BootstrapFormView = require 'tbirds/bootstrap_formview'
 { make_field_input
-  make_field_textarea } = require 'agate/src/templates/forms'
-
+  make_field_textarea } = require 'tbirds/templates/forms'
 
 HubChannel = Backbone.Radio.channel 'hubby'
 

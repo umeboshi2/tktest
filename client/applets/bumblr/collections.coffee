@@ -2,8 +2,7 @@ Backbone = require 'backbone'
 Marionette = require 'backbone.marionette'
 PageableCollection = require 'backbone.paginator'
 
-#Util = require 'agate/src/apputil'
-{ BaseLocalStorageCollection } = require 'agate/src/lscollection'
+{ BaseLocalStorageCollection } = require 'tbirds/lscollection'
 
 Models = require './models'
 

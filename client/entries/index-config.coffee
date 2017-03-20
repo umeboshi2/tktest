@@ -1,10 +1,11 @@
-config = require 'agate/src/base-tkapp-config'
+config = require 'tbirds/base-tkapp-config'
 
+config.brand.url = '#'
 misc_menu = 
   label: 'Misc Applets'
   menu: [
     {
-      label: 'bumblr'
+      label: 'Bumblr'
       url: '#bumblr'
     }
     {
@@ -14,10 +15,6 @@ misc_menu =
   ]
 
 config.navbarEntries = [
-  {
-    label: 'New App'
-    url: '/newpage'
-  }
   misc_menu
   {
     label: 'Hubby'
@@ -30,6 +27,10 @@ config.navbarEntries = [
   {
     label: 'Another'
     menu: [
+      {
+        label: 'New App'
+        url: '/another'
+      }
       {
         label: 'Login'
         url: '#frontdoor/login'

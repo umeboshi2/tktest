@@ -9,6 +9,13 @@ require 'fullcalendar/dist/fullcalendar.css'
 
 HubChannel = Backbone.Radio.channel 'hubby'
 
+
+current_calendar_date = undefined
+current_calendar_date = new Date '2016-10-15'
+HubChannel.reply 'maincalendar:get-date', () ->
+  current_calendar_date
+  
+
 #################################
 # templates
 #################################
@@ -81,6 +88,14 @@ class MeetingCalendarView extends Backbone.Marionette.View
       viewRender: calendar_view_render
       loading: loading_calendar_events
       eventClick: calEventClick
+    # if the current calendar date that has been set,
+    # go to that date
+    if date != undefined
+      cal.fullCalendar('gotoDate', date)
+    HubChannel.reply 'maincalendar:set-date', () ->
+      current_calendar_date = cal.fullCalendar 'getDate'
+
+
       
     
 module.exports = MeetingCalendarView

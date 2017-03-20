@@ -4,9 +4,9 @@ Toolkit = require 'marionette.toolkit'
 tc = require 'teacup'
 require 'bootstrap'
 
-require 'agate/src/main-router'
+require 'tbirds/main-router'
 
-TopApp = require 'agate/src/top-app'
+TopApp = require 'tbirds/top-app'
 MainAppConfig = require './newpage-config'
 
 MainChannel = Backbone.Radio.channel 'global'

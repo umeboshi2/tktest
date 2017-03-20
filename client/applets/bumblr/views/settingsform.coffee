@@ -1,9 +1,9 @@
 Backbone = require 'backbone'
 tc = require 'teacup'
 
-BootstrapFormView = require 'agate/src/bootstrap_formview'
-{ navigate_to_url } = require 'agate/src/apputil'
-{ form_group_input_div } = require 'agate/src/templates/forms'
+BootstrapFormView = require 'tbirds/bootstrap_formview'
+{ navigate_to_url } = require 'tbirds/apputil'
+{ form_group_input_div } = require 'tbirds/templates/forms'
 
 BumblrChannel = Backbone.Radio.channel 'bumblr'
 

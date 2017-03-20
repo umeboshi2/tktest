@@ -1,3 +1,4 @@
+$ = require 'jquery'
 Backbone = require 'backbone'
 Marionette = require 'backbone.marionette'
 
@@ -10,7 +11,7 @@ HubChannel = Backbone.Radio.channel 'hubby'
 #################################
 # templates
 #################################
-{ capitalize } = require 'agate/src/apputil'
+{ capitalize } = require 'tbirds/apputil'
 
 compare_property_function = (property) ->
   (a,b) ->

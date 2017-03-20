@@ -2,9 +2,9 @@ $ = require 'jquery'
 Backbone = require 'backbone'
 Marionette = require 'backbone.marionette'
 
-Util = require 'agate/src/apputil'
-{ MainController } = require 'agate/src/controllers'
-{ make_sidebar_template } = require 'agate/src/templates/layout'
+Util = require 'tbirds/apputil'
+{ MainController } = require 'tbirds/controllers'
+{ make_sidebar_template } = require 'tbirds/templates/layout'
 
 Models = require './models'
 Collections = require './collections'

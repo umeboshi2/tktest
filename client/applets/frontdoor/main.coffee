@@ -3,7 +3,7 @@ Toolkit = require 'marionette.toolkit'
 
 Controller = require './controller'
 
-TkApplet = require 'agate/src/tkapplet'
+TkApplet = require 'tbirds/tkapplet'
 
 MainChannel = Backbone.Radio.channel 'global'
 

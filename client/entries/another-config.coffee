@@ -1,6 +1,7 @@
 config = require 'tbirds/base-tkapp-config'
 
-config.brand.url = '#'
+config.brand.url = '/'
+
 misc_menu = 
   label: 'Misc Applets'
   menu: [
@@ -15,10 +16,7 @@ misc_menu =
   ]
 
 config.navbarEntries = [
-  {
-    label: 'Old Style'
-    url: '/'
-  }
+  misc_menu
   {
     label: 'Hubby'
     url: '#hubby'
@@ -27,14 +25,9 @@ config.navbarEntries = [
     label: 'Bumblr'
     url: '#bumblr'
   }
-  misc_menu
   {
-    label: 'Another'
+    label: 'Yet Another'
     menu: [
-      {
-        label: 'Intro'
-        url: '#pages/README'
-      }
       {
         label: 'Login'
         url: '#frontdoor/login'

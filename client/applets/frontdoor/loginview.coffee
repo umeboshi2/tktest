@@ -3,10 +3,10 @@ Marionette = require 'backbone.marionette'
 tc = require 'teacup'
 
 { navigate_to_url
-  make_field_input_ui } = require 'agate/src/apputil'
+  make_field_input_ui } = require 'tbirds/apputil'
 
-{ form_group_input_div } = require 'agate/src/templates/forms'
-BootstrapFormView = require 'agate/src/bootstrap_formview'
+{ form_group_input_div } = require 'tbirds/templates/forms'
+BootstrapFormView = require 'tbirds/bootstrap_formview'
 
 MainChannel = Backbone.Radio.channel 'global'
 

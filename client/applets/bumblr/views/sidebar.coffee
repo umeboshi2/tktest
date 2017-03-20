@@ -2,7 +2,7 @@ Backbone = require 'backbone'
 Marionette = require 'backbone.marionette'
 tc = require 'teacup'
 
-{ navigate_to_url } = require 'agate/src/apputil'
+{ navigate_to_url } = require 'tbirds/apputil'
 
 BumblrChannel = Backbone.Radio.channel 'bumblr'
 

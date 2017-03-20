@@ -7,7 +7,7 @@ tc = require 'teacup'
 
 #require 'jquery-ui'
 
-{ navigate_to_url } = require 'agate/src/apputil'
+{ navigate_to_url } = require 'tbirds/apputil'
 
 BumblrChannel = Backbone.Radio.channel 'bumblr'
 

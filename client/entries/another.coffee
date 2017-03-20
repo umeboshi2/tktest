@@ -7,15 +7,15 @@ require 'bootstrap'
 require 'tbirds/main-router'
 TopApp = require 'tbirds/top-app'
 
-MainAppConfig = require './index-config'
+MainAppConfig = require './another-config'
 
 MainChannel = Backbone.Radio.channel 'global'
 
 class TkAppState extends Backbone.Model
   defaults:
-    AppRegion: new Marionette.Region el:'body'
+    #AppRegion: new Marionette.Region el:'body'
     startHistory: true
-    NavBarClass: false
+    #NavBarClass: false
     appConfig: {}
     
 app = new TopApp

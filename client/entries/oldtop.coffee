@@ -3,8 +3,8 @@ Marionette = require 'backbone.marionette'
 Toolkit = require 'marionette.toolkit'
 tc = require 'teacup'
 
-MessagesApp = require 'agate/src/tkmessages'
-NavbarApp = require 'agate/src/tknavbar'
+MessagesApp = require 'tbirds/tkmessages'
+NavbarApp = require 'tbirds/tknavbar'
   
 MainChannel = Backbone.Radio.channel 'global'
 class TopApp extends Toolkit.App

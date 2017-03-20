@@ -1,6 +1,6 @@
 Marionette = require 'backbone.marionette'
 
-TkApplet = require 'agate/src/tkapplet'
+TkApplet = require 'tbirds/tkapplet'
 Controller = require './controller'
 
 MainChannel = Backbone.Radio.channel 'global'

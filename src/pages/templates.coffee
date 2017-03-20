@@ -61,11 +61,18 @@ index = (manifest, theme) ->
 
 newpage = (manifest, theme) ->
   base_page 'newpage.js', manifest, theme
-  
-module.exports =
-  index: index
-  newpage: newpage
 
+newpage = (manifest, theme) ->
+  base_page 'newpage.js', manifest, theme
+
+template = (name) ->
+  (manifest, theme) ->
+    base_page "#{name}.js", manifest, theme
+    
+module.exports =
+  index: template 'index'
+  newpage: template 'newpage'
+  another: template 'another'
   
 
   

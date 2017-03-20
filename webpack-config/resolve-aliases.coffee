@@ -1,21 +1,10 @@
 # webpack config resolve.alias
 path = require 'path'
-nodeModulesPath = path.resolve __dirname, '..', 'node_modules'
 
-phaserbuild = path.resolve nodeModulesPath, 'phaser/build/custom'
-phaser = path.resolve phaserbuild, 'phaser-split.js'
-pixi = path.resolve phaserbuild, 'pixi.js'
-p2 = path.resolve phaserbuild, 'p2.js'
+make_aliases = require 'tbirds/dist/webpack/resolve-aliases'
+aliases = make_aliases __dirname
+aliases.tbirds = 'tbirds/src'
+#nodeModulesPath = path.resolve __dirname, '..', 'node_modules'
+console.log aliases
 
-module.exports =
-  jquery: 'jquery/src/jquery'
-  'bootstrap-fileinput-css': 'bootstrap-fileinput/css/fileinput.min.css'
-  'bootstrap-fileinput-js': 'bootstrap-fileinput/js/fileinput.min.js'
-  tablednd: 'TableDnD/js/jquery.tablednd.js'
-  request: 'browser-request'
-  'tag-it': 'tag-it/js/tag-it.js'
-  applets: path.resolve __dirname, '../client/applets'
-  phaser: phaser
-  pixi: pixi
-  p2: p2
-  
+module.exports = aliases

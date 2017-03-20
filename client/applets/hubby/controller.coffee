@@ -3,10 +3,10 @@ Marionette = require 'backbone.marionette'
 tc = require 'teacup'
 ms = require 'ms'
 
-{ MainController } = require 'agate/src/controllers'
-{ SlideDownRegion } = require 'agate/src/regions'
-{ ToolbarAppletLayout } = require 'agate/src/views/layout'
-Util = require 'agate/src/apputil'
+{ MainController } = require 'tbirds/controllers'
+{ SlideDownRegion } = require 'tbirds/regions'
+{ ToolbarAppletLayout } = require 'tbirds/views/layout'
+Util = require 'tbirds/apputil'
 
 MainChannel = Backbone.Radio.channel 'global'
 MessageChannel = Backbone.Radio.channel 'messages'
@@ -38,7 +38,6 @@ class ToolbarView extends Backbone.Marionette.View
     'click @ui.search_bth': 'search_hubby'
 
   show_calendar: ->
-    l = window.location
     hash = '#hubby'
     if window.location.hash == hash
       controller = HubChannel.request 'main-controller'

@@ -1,9 +1,9 @@
 Backbone = require 'backbone'
 Marionette = require 'backbone.marionette'
 
-{ MainController } = require 'agate/src/controllers'
-{ login_form } = require 'agate/src/templates/forms'
-{ SlideDownRegion } = require 'agate/src/regions'
+{ MainController } = require 'tbirds/controllers'
+{ login_form } = require 'tbirds/templates/forms'
+{ SlideDownRegion } = require 'tbirds/regions'
 
 require '../../static-documents'
 

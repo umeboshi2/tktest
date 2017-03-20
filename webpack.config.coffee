@@ -5,8 +5,8 @@ webpack = require 'webpack'
 ManifestPlugin = require 'webpack-manifest-plugin'
 StatsPlugin = require 'stats-webpack-plugin'
 
-loaders = require 'agate/src/webpack/loaders'
-vendor = require 'agate/src/webpack/vendor'
+loaders = require 'tbirds/dist/webpack/loaders'
+vendor = require 'tbirds/dist/webpack/vendor'
 
 resolve = require './webpack-config/resolve'
 
@@ -81,8 +81,9 @@ else
 WebPackConfig =
   entry:
     vendor: vendor
-    index: './js/entries/index.js'
-    newpage: './js/entries/newpage.js'
+    index: './client/entries/index'
+    another: './client/entries/another'
+    newpage: './client/entries/newpage'
   output: WebPackOutput
   plugins: AllPlugins
   module:
@@ -97,6 +98,7 @@ if BuildEnvironment is 'dev'
     historyApiFallback:
       rewrites: [
         {from: /^\/$/, to: '/_devpages/index.html'}
+        {from: /^\/another/, to: '/_devpages/another.html'}
         {from: /^\/newpage/, to: '/_devpages/newpage.html'}
         ]
     stats:

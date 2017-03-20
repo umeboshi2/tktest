@@ -1,7 +1,7 @@
 # config resolve.
-aliases = require './resolve-aliases' 
-modules = require 'agate/src/webpack/resolve-modules'
-extensions = require 'agate/src/webpack/resolve-extensions'
+modules = require 'tbirds/src/webpack/resolve-modules'
+extensions = require 'tbirds/src/webpack/resolve-extensions'
+aliases = require './resolve-aliases'
 
 module.exports =
   modules: modules
