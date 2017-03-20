@@ -59,22 +59,12 @@ base_page = tc.renderable (appfile, manifest, theme) ->
         #src: "//bard:8080/build/#{manifest[appfile]}"
               
 
-index = (manifest, theme) ->
-  base_page 'index.js', manifest, theme
-
-newpage = (manifest, theme) ->
-  base_page 'newpage.js', manifest, theme
-
-newpage = (manifest, theme) ->
-  base_page 'newpage.js', manifest, theme
-
 template = (name) ->
   (manifest, theme) ->
     base_page "#{name}.js", manifest, theme
     
 module.exports =
   index: template 'index'
-  newpage: template 'newpage'
   another: template 'another'
   
 

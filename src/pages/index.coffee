@@ -11,7 +11,6 @@ catch err
   webpackManifest =
       'common.js': 'common.js'
       'vendor.js': 'vendor.js'
-      'agate.js': 'agate.js'
 
 
 # FIXME require this  
@@ -22,7 +21,6 @@ get_manifest = (name) ->
     manifest =
       'common.js': 'common.js'
       'vendor.js': 'vendor.js'
-      'agate.js': 'agate.js'
     filename = "#{name}.js"
     manifest[filename] = filename
   else

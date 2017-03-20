@@ -83,7 +83,6 @@ WebPackConfig =
     vendor: vendor
     index: './client/entries/index'
     another: './client/entries/another'
-    newpage: './client/entries/newpage'
   output: WebPackOutput
   plugins: AllPlugins
   module:
@@ -99,7 +98,6 @@ if BuildEnvironment is 'dev'
       rewrites: [
         {from: /^\/$/, to: '/_devpages/index.html'}
         {from: /^\/another/, to: '/_devpages/another.html'}
-        {from: /^\/newpage/, to: '/_devpages/newpage.html'}
         ]
     stats:
       colors: true
