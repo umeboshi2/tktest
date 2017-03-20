@@ -3,8 +3,6 @@ Marionette = require 'backbone.marionette'
 Masonry = require 'masonry-layout'
 tc = require 'teacup'
 
-#require 'jquery-ui'
-
 { navigate_to_url } = require 'agate/src/apputil'
 
 BumblrChannel = Backbone.Radio.channel 'bumblr'
@@ -44,6 +42,9 @@ class SimpleBlogListView extends Backbone.Marionette.CompositeView
   ui:
     blogs: '#bloglist-container'
 
+  onBeforeDestroy: ->
+    @masonry.destroy()
+    
   onDomRefresh: () ->
     console.log 'onDomRefresh called on SimpleBlogListView'
     @masonry = new Masonry "#bloglist-container",

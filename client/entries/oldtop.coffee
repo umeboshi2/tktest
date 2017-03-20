@@ -3,8 +3,8 @@ Marionette = require 'backbone.marionette'
 Toolkit = require 'marionette.toolkit'
 tc = require 'teacup'
 
-MessagesApp = require './messages'
-NavbarApp = require './navbar'
+MessagesApp = require 'agate/src/tkmessages'
+NavbarApp = require 'agate/src/tknavbar'
   
 MainChannel = Backbone.Radio.channel 'global'
 class TopApp extends Toolkit.App
@@ -33,9 +33,9 @@ class TopApp extends Toolkit.App
     @showView layout    
 
   onStart: ->
-    require '../applets/frontdoor/main'
-    require '../applets/bumblr/main'
-    require '../applets/hubby/main'
+    require 'applets/frontdoor/main'
+    require 'applets/bumblr/main'
+    require 'applets/hubby/main'
     # build main page layout
     @initPage()
     if @getState 'startHistory'

@@ -1,5 +1,6 @@
-config = require './base-app-config'
+config = require 'agate/src/base-tkapp-config'
 
+config.brand.url = '#'
 misc_menu = 
   label: 'Misc Applets'
   menu: [

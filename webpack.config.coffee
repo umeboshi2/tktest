@@ -5,9 +5,10 @@ webpack = require 'webpack'
 ManifestPlugin = require 'webpack-manifest-plugin'
 StatsPlugin = require 'stats-webpack-plugin'
 
-loaders = require './webpack-config/loaders'
+loaders = require 'agate/src/webpack/loaders'
+vendor = require 'agate/src/webpack/vendor'
+
 resolve = require './webpack-config/resolve'
-vendor = require './webpack-config/vendor'
 
 local_build_dir = "build"
 

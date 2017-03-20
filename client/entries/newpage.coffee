@@ -4,28 +4,13 @@ Toolkit = require 'marionette.toolkit'
 tc = require 'teacup'
 require 'bootstrap'
 
-TopApp = require './top-app'
-MessagesApp = require './messages'
-NavbarApp = require './navbar'
+require 'agate/src/main-router'
+
+TopApp = require 'agate/src/top-app'
 MainAppConfig = require './newpage-config'
-require './router'
 
 MainChannel = Backbone.Radio.channel 'global'
 MessageChannel = Backbone.Radio.channel 'messages'
-
-# main channel requests
-# 
-# - applet:#{name}:route
-# this creates an AppRouter and a Controller, setting
-# routes to access the applet.  The reply function
-# is in the "main" module
-#
-# - mainpage:init (appmodel)
-# This request builds the main layout.
-#
-# 
-# 
-#
 
 class TkAppState extends Backbone.Model
   defaults:
@@ -43,6 +28,7 @@ if __DEV__
   window.App = app
 
 MainChannel.reply 'main:app:appmodel', ->
+  console.warn "main:app:appmodel needs to go.  Use main:app:config"
   new Backbone.Model MainAppConfig
 
 MainChannel.reply 'main:app:object', ->
