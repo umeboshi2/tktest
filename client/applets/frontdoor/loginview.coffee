@@ -2,11 +2,11 @@ Backbone = require 'backbone'
 Marionette = require 'backbone.marionette'
 tc = require 'teacup'
 
-{ navigate_to_url
-  make_field_input_ui } = require 'tbirds/apputil'
+make_field_input_ui = require 'tbirds/util/make-field-input-ui'
+navigate_to_url = require 'tbirds/util/navigate-to-url'
 
 { form_group_input_div } = require 'tbirds/templates/forms'
-BootstrapFormView = require 'tbirds/bootstrap_formview'
+BootstrapFormView = require 'tbirds/views/bsformview'
 
 MainChannel = Backbone.Radio.channel 'global'
 

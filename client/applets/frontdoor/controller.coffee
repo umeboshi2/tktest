@@ -3,7 +3,7 @@ Marionette = require 'backbone.marionette'
 
 { MainController } = require 'tbirds/controllers'
 { login_form } = require 'tbirds/templates/forms'
-{ SlideDownRegion } = require 'tbirds/regions'
+SlideDownRegion = require 'tbirds/regions/slidedown'
 
 require '../../static-documents'
 

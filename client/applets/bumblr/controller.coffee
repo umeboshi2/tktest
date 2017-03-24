@@ -1,54 +1,62 @@
 $ = require 'jquery'
 Backbone = require 'backbone'
 Marionette = require 'backbone.marionette'
+tc = require 'teacup'
 
-Util = require 'tbirds/apputil'
+scroll_top_fast = require 'tbirds/util/scroll-top-fast'
+navigate_to_url = require 'tbirds/util/navigate-to-url'
+
 { MainController } = require 'tbirds/controllers'
-{ make_sidebar_template } = require 'tbirds/templates/layout'
+{ ToolbarAppletLayout } = require 'tbirds/views/layout'
 
 Models = require './models'
 Collections = require './collections'
 
 MiscViews = require './views/misc'
-SideBarView = require './views/sidebar'
-
 
 BumblrChannel = Backbone.Radio.channel 'bumblr'
 
-sidebar_template = make_sidebar_template()
-  
 
-
-side_bar_data = new Backbone.Model
+toolbar_data = new Backbone.Model
   entries: [
     {
       name: 'List Blogs'
       url: '#bumblr/listblogs'
+      icon: 'list'
     }
     {
       name: 'Settings'
       url: '#bumblr/settings'
+      icon: 'gear'
     }
     ]
 
-class BumblerLayout extends Backbone.Marionette.View
-  template: sidebar_template
-  regions:
-    sidebar: '#sidebar'
-    content: '#main-content'
+toolbar_template = tc.renderable (model) ->
+  tc.div '.btn-group.btn-group-justified', ->
+    for entry in model.entries
+      tc.div '.toolbar-button.btn.btn-default',
+      'button-url': entry.url, ->
+        tc.span ".fa.fa-#{entry.icon}", ' ' + entry.name
+
+class ToolbarView extends Backbone.Marionette.View
+  template: toolbar_template
+  ui:
+    toolbarButton: '.toolbar-button'
+  events:
+    'click @ui.toolbarButton': 'toolbarButtonPressed'
+  toolbarButtonPressed: (event) ->
+    console.log "toolbarButtonPressed", event
+    url = event.currentTarget.getAttribute 'button-url'
+    navigate_to_url url
     
-  
 class Controller extends MainController
-  layoutClass: BumblerLayout
-  sidebarclass: SideBarView
-  sidebar_model: side_bar_data
-  _make_sidebar: ->
-    sidebar = @_empty_sidebar()
-    view = new @sidebarclass
-      model: @sidebar_model
-    sidebar.show view
+  layoutClass: ToolbarAppletLayout
+  setup_layout_if_needed: ->
+    super()
+    view = new ToolbarView
+      model: toolbar_data
+    @layout.showChildView 'toolbar', view
     
-  
   set_header: (title) ->
     header = $ '#header'
     header.text title
@@ -63,20 +71,17 @@ class Controller extends MainController
     @start()
     
   show_mainview: () ->
-    @_make_sidebar()
     view = new MiscViews.MainBumblrView
     @layout.showChildView 'content', view
-    Util.scroll_top_fast()
+    scroll_top_fast()
     
   show_dashboard: () ->
-    @_make_sidebar()
     view = new MiscViews.BumblrDashboardView
     @layout.showChildView 'content', view
-    Util.scroll_top_fast()
+    scroll_top_fast()
       
   list_blogs: () ->
     @setup_layout_if_needed()
-    @_make_sidebar()
     require.ensure [], () =>
       blogs = BumblrChannel.request 'get_local_blogs'
       SimpleBlogListView = require './views/bloglist'
@@ -89,7 +94,6 @@ class Controller extends MainController
   view_blog: (blog_id) ->
     #console.log 'view blog called for ' + blog_id
     @setup_layout_if_needed()
-    @_make_sidebar()
     require.ensure [], () =>
       host = blog_id + '.tumblr.com'
       collection = BumblrChannel.request 'make_blog_post_collection', host
@@ -99,31 +103,29 @@ class Controller extends MainController
         view = new BlogPostListView
           collection: collection
         @layout.showChildView 'content', view
-        Util.scroll_top_fast()
+        scroll_top_fast()
     # name the chunk
     , 'bumblr-view-blog-view'
     
   add_new_blog: () ->
     @setup_layout_if_needed()
-    @_make_sidebar()
     require.ensure [], () =>
       NewBlogFormView = require './views/newblog'
       view = new NewBlogFormView
       @layout.showChildView 'content', view
-      Util.scroll_top_fast()
+      scroll_top_fast()
     # name the chunk
     , 'bumblr-view-add-blog'
     
           
   settings_page: () ->
     @setup_layout_if_needed()
-    @_make_sidebar()
     require.ensure [], () =>
       ConsumerKeyFormView = require './views/settingsform'
       settings = BumblrChannel.request 'get_app_settings'
       view = new ConsumerKeyFormView model:settings
       @layout.showChildView 'content', view
-      Util.scroll_top_fast()
+      scroll_top_fast()
     # name the chunk
     , 'bumblr-view-settings'
     

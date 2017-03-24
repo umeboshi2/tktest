@@ -3,7 +3,7 @@ Marionette = require 'backbone.marionette'
 
 tc = require 'teacup'
 
-BootstrapFormView = require 'tbirds/bootstrap_formview'
+BootstrapFormView = require 'tbirds/views/bsformview'
 { make_field_input
   make_field_textarea } = require 'tbirds/templates/forms'
 

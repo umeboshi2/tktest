@@ -4,7 +4,11 @@ Toolkit = require 'marionette.toolkit'
 tc = require 'teacup'
 require 'bootstrap'
 
-require 'tbirds/main-router'
+if __DEV__
+  console.warn "__DEV__", __DEV__, "DEBUG", DEBUG
+  Backbone.Radio.DEBUG = true
+
+require 'tbirds/applet-router'
 TopApp = require 'tbirds/top-app'
 
 MainAppConfig = require './another-config'

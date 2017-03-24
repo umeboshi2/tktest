@@ -3,7 +3,7 @@ Marionette = require 'backbone.marionette'
 Masonry = require 'masonry-layout'
 tc = require 'teacup'
 
-{ navigate_to_url } = require 'tbirds/apputil'
+navigate_to_url = require 'tbirds/util/navigate-to-url'
 
 BumblrChannel = Backbone.Radio.channel 'bumblr'
 

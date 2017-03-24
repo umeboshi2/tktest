@@ -30,6 +30,15 @@ class Applet extends TkApplet
     HubChannel.reply 'view-items', (layout, region, options) ->
       controller.list_items layout, region, options
     
+current_calendar_date = undefined
+current_calendar_date = new Date '2016-10-15'
+HubChannel.reply 'maincalendar:set-date', () ->
+  cal = $ '#maincalendar'
+  current_calendar_date = cal.fullCalendar 'getDate'
+
+HubChannel.reply 'maincalendar:get-date', () ->
+  current_calendar_date
+  
 MainChannel.reply 'applet:hubby:route', () ->
   console.warn "Don't use applet:hubby:route"
   controller = new Controller MainChannel

@@ -2,9 +2,9 @@ Backbone = require 'backbone'
 Marionette = require 'backbone.marionette'
 tc = require 'teacup'
 
-BootstrapFormView = require 'tbirds/bootstrap_formview'
+BootstrapFormView = require 'tbirds/views/bsformview'
 { form_group_input_div } = require 'tbirds/templates/forms'
-{ navigate_to_url } = require 'tbirds/apputil'
+navigate_to_url = require 'tbirds/util/navigate-to-url'
 
 BumblrChannel = Backbone.Radio.channel 'bumblr'
 

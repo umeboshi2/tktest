@@ -4,9 +4,8 @@ tc = require 'teacup'
 ms = require 'ms'
 
 { MainController } = require 'tbirds/controllers'
-{ SlideDownRegion } = require 'tbirds/regions'
 { ToolbarAppletLayout } = require 'tbirds/views/layout'
-Util = require 'tbirds/apputil'
+navigate_to_url = require 'tbirds/util/navigate-to-url'
 
 MainChannel = Backbone.Radio.channel 'global'
 MessageChannel = Backbone.Radio.channel 'messages'
@@ -45,10 +44,10 @@ class ToolbarView extends Backbone.Marionette.View
     else
       if __DEV__
         console.log "current url", window.location
-      Util.navigate_to_url '#hubby'
+      navigate_to_url '#hubby'
 
   list_meetings: ->
-    Util.navigate_to_url '#hubby/listmeetings'
+    navigate_to_url '#hubby/listmeetings'
 
   search_hubby: ->
     controller = HubChannel.request 'main-controller'

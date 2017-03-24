@@ -1,4 +1,4 @@
-config = require 'tbirds/base-tkapp-config'
+config = require 'tbirds/app-config'
 
 config.brand.url = '#'
 misc_menu = 

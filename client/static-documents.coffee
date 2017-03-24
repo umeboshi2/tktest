@@ -4,7 +4,6 @@ Backbone = require 'backbone'
 Marionette = require 'backbone.marionette'
 
 { BaseLocalStorageCollection } = require 'tbirds/lscollection'
-{ BaseCollection } = require 'tbirds/collections'
 
 MainChannel = Backbone.Radio.channel 'global'
 MessageChannel = Backbone.Radio.channel 'messages'
@@ -25,10 +24,8 @@ class StaticDocument extends Backbone.Model
   parse: (response) ->
     return content: response
     
-class StaticDocumentCollection extends BaseCollection
+class StaticDocumentCollection extends Backbone.Collection
   model: StaticDocument
-  
-
   
 DocChannel.reply 'get-document', (name) ->
   model = new StaticDocument

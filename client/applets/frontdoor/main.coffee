@@ -1,9 +1,8 @@
 Marionette = require 'backbone.marionette'
-Toolkit = require 'marionette.toolkit'
+TkApplet = require 'tbirds/tkapplet'
 
 Controller = require './controller'
 
-TkApplet = require 'tbirds/tkapplet'
 
 MainChannel = Backbone.Radio.channel 'global'
 

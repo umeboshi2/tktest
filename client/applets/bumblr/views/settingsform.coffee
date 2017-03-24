@@ -1,8 +1,8 @@
 Backbone = require 'backbone'
 tc = require 'teacup'
 
-BootstrapFormView = require 'tbirds/bootstrap_formview'
-{ navigate_to_url } = require 'tbirds/apputil'
+BootstrapFormView = require 'tbirds/views/bsformview'
+navigate_to_url = require 'tbirds/util/navigate-to-url'
 { form_group_input_div } = require 'tbirds/templates/forms'
 
 BumblrChannel = Backbone.Radio.channel 'bumblr'

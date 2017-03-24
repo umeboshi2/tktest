@@ -9,13 +9,6 @@ require 'fullcalendar/dist/fullcalendar.css'
 
 HubChannel = Backbone.Radio.channel 'hubby'
 
-
-current_calendar_date = undefined
-current_calendar_date = new Date '2016-10-15'
-HubChannel.reply 'maincalendar:get-date', () ->
-  current_calendar_date
-  
-
 #################################
 # templates
 #################################
@@ -41,10 +34,12 @@ render_calendar_event = (calEvent, element) ->
 calendar_view_render = (view, element) ->
   HubChannel.request 'maincalendar:set-date'
   
-loading_calendar_events = (bool) ->
+loading_calendar_events = (isLoading, view) ->
+  console.log "calendar view", view
+  console.log "calendar loading events", isLoading
   loading = $ '#loading'
   header = $ '.fc-toolbar'
-  if bool
+  if isLoading
     loading.show()
     header.hide()
   else
@@ -55,6 +50,8 @@ class MeetingCalendarView extends Backbone.Marionette.View
   template: meeting_calendar
   ui:
     calendar: '#maincalendar'
+    loading: '#loading'
+    
   options:
     minicalendar: false
     layout: false
@@ -63,6 +60,8 @@ class MeetingCalendarView extends Backbone.Marionette.View
     cal = @ui.calendar.fullCalendar 'destroy'
     
   onDomRefresh: () ->
+    console.log "onDomRefresh calendarview"
+    @ui.loading.hide()
     calEventClick = (event) =>
       if not @options.minicalendar
         url = event.url
@@ -86,16 +85,17 @@ class MeetingCalendarView extends Backbone.Marionette.View
         ]
       eventRender: render_calendar_event
       viewRender: calendar_view_render
-      loading: loading_calendar_events
+      #loading: loading_calendar_events
       eventClick: calEventClick
+    console.log "Calendar created"
+    cal.fullCalendar('loading', loading_calendar_events)
     # if the current calendar date that has been set,
     # go to that date
     if date != undefined
       cal.fullCalendar('gotoDate', date)
-    HubChannel.reply 'maincalendar:set-date', () ->
-      current_calendar_date = cal.fullCalendar 'getDate'
-
-
+    if cal.fullCalendar('isEventsRendered')
+      console.log "ISIS isEventsRendered"
+      
       
     
 module.exports = MeetingCalendarView

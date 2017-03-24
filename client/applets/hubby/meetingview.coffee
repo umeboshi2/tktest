@@ -11,7 +11,7 @@ HubChannel = Backbone.Radio.channel 'hubby'
 #################################
 # templates
 #################################
-{ capitalize } = require 'tbirds/apputil'
+capitalize = require 'tbirds/util/capitalize'
 
 compare_property_function = (property) ->
   (a,b) ->
