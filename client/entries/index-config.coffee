@@ -1,5 +1,6 @@
 config = require 'tbirds/app-config'
 
+config.brand.label = 'TKTest'
 config.brand.url = '#'
 misc_menu = 
   label: 'Misc Applets'
