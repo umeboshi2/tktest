@@ -8,7 +8,6 @@ gutil = require 'gulp-util'
 size = require 'gulp-size'
 shell = require 'shelljs'
 webpack = require 'webpack'
-webpackConfig = require "./webpack.config"
 WebpackDevServer = require 'webpack-dev-server'
 
 
@@ -50,8 +49,9 @@ gulp.task 'coffee', () ->
 
 
 devServer = {}
-gulp.task "webpack-dev-server", ['coffee', 'devpages'], (callback) ->
+gulp.task "webpack-dev-server", ['devpages'], (callback) ->
   # Start a webpack-dev-server.
+  webpackConfig = require "./webpack.config"
   devServer = new WebpackDevServer(webpack(webpackConfig))
   devServer.listen 8080, "0.0.0.0", (err) ->
     throw new gutil.PluginError("webpack-dev-server", err) if err
@@ -60,7 +60,7 @@ gulp.task "webpack-dev-server", ['coffee', 'devpages'], (callback) ->
   return
 
 
-gulp.task 'webpack:build-prod', ['coffee'], (callback) ->
+gulp.task 'webpack:build-prod', (callback) ->
   statopts = 
     colors: true
     chunks: true
@@ -68,6 +68,7 @@ gulp.task 'webpack:build-prod', ['coffee'], (callback) ->
     reasons: true
     maxModules: 9999
   # run webpack
+  process.env.NODE_ENV = 'production'
   process.env.PRODUCTION_BUILD = 'true'
   ProdConfig = require './webpack.config'
   prodCompiler = webpack ProdConfig
