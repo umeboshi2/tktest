@@ -5,9 +5,8 @@ webpack = require 'webpack'
 ManifestPlugin = require 'webpack-manifest-plugin'
 StatsPlugin = require 'stats-webpack-plugin'
 
-loaders = require 'tbirds/dist/webpack/loaders'
-vendor = require 'tbirds/dist/webpack/vendor'
-
+loaders = require 'tbirds/src/webpack/loaders'
+vendor = require 'tbirds/src/webpack/vendor'
 resolve = require './webpack-config/resolve'
 
 local_build_dir = "build"
