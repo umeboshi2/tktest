@@ -79,8 +79,12 @@ gulp.task 'webpack:build-prod', (callback) ->
     return
   return
 
+
+gulp.task "production", ['webpack:build-prod'], (callback) ->
+  gulp.start 'pages'
+  
 gulp.task 'default', ->
   gulp.start 'webpack-dev-server'
   
-gulp.task 'production', ->
-  gulp.start 'webpack:build-prod'
+#gulp.task 'production', ->
+#  gulp.start 'webpack:build-prod'
